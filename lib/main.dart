@@ -1,3 +1,4 @@
+import 'package:blog_app/core/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,9 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Blog App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: Apptheme.darkThemeMode,
+      themeMode: ThemeMode.system,
       home: const HomePage(),
     );
   }
