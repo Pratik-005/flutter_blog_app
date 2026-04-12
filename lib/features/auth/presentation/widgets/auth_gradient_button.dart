@@ -19,7 +19,6 @@ class AuthGradientButton extends StatelessWidget {
 
       child: ElevatedButton(
         onPressed: () {},
-
         style: ElevatedButton.styleFrom(
           fixedSize: Size(395, 55),
           backgroundColor: Colors.transparent,
@@ -30,3 +29,4 @@ class AuthGradientButton extends StatelessWidget {
     );
   }
 }
+

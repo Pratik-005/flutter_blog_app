@@ -1,4 +1,5 @@
 import 'package:blog_app/core/theme/theme.dart';
+import 'package:blog_app/features/auth/presentation/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,21 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Apptheme.darkThemeMode,
       themeMode: ThemeMode.system,
-      home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: const Center(
-        child: Text('Placeholder', style: TextStyle(fontSize: 20)),
-      ),
+      home: const SignupPage(),
     );
   }
 }

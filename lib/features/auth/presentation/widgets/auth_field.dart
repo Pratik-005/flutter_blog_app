@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class AuthField extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
-  final bool isObscured ;
+  final bool isObscured;
 
   const AuthField({
     super.key,
     required this.hintText,
     required this.controller,
-    this.isObscured = false
+    this.isObscured = false,
   });
 
   @override
@@ -26,4 +26,5 @@ class AuthField extends StatelessWidget {
       },
     );
   }
+  
 }
