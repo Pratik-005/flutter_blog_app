@@ -1,14 +1,20 @@
 import 'package:blog_app/core/error/exception.dart';
 import 'package:blog_app/core/error/failure.dart';
+import 'package:blog_app/core/utils/connection_checker.dart';
 import 'package:blog_app/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:blog_app/core/entities/user.dart';
+import 'package:blog_app/features/auth/data/models/user_model.dart';
 import 'package:blog_app/features/auth/domain/repositories/auth_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
+  final ConnectionChecker connectionChecker;
 
-  const AuthRepositoryImpl(this.remoteDataSource);
+  const AuthRepositoryImpl(
+    this.remoteDataSource, {
+    required this.connectionChecker,
+  });
 
   @override
   Future<Either<Failure, User>> signinWithEmailPassword({
@@ -47,6 +53,19 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Either<Failure, User>> getUser() async {
     try {
+      if (!await connectionChecker.isConnected) {
+        final session = remoteDataSource.userSession;
+        if (session == null) return left(Failure('user not logged in !'));
+
+        return right(
+          UserModel(
+            email: session.user.email ?? '',
+            id: session.user.id,
+            name: '',
+          ),
+        );
+      }
+
       final user = await remoteDataSource.getUser();
 
       if (user == null) return left(Failure('user not logged in !'));
