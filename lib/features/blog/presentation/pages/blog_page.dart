@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:blog_app/core/theme/color_pallete.dart';
 import 'package:blog_app/core/utils/show_snackbar.dart';
 import 'package:blog_app/core/widgets/Loader.dart';

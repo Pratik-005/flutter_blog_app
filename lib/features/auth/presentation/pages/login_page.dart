@@ -1,7 +1,6 @@
 import 'package:blog_app/core/theme/color_pallete.dart';
 import 'package:blog_app/core/utils/show_snackbar.dart';
 import 'package:blog_app/core/widgets/Loader.dart';
-import 'package:blog_app/features/auth/domain/repositories/auth_repository.dart';
 import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/auth/presentation/pages/signup_page.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';

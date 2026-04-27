@@ -1,9 +1,8 @@
-import 'package:blog_app/core/theme/color_pallete.dart';
 import 'package:blog_app/core/utils/calculate_readin_time.dart';
 import 'package:blog_app/features/blog/domain/entities/blog.dart';
 import 'package:blog_app/features/blog/presentation/pages/blog_viewer_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 
 class BlogCard extends StatelessWidget {
   final Blog blog;
