@@ -5,6 +5,7 @@ import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/auth/presentation/pages/login_page.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
+import 'package:blog_app/features/blog/presentation/pages/blog_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +22,7 @@ class _SignupPageState extends State<SignupPage> {
   final nameController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
-
+  
   @override
   void dispose() {
     emailController.dispose();
@@ -34,7 +35,6 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocConsumer<AuthBloc, AuthState>(
-        
         builder: (context, state) {
           if (state is AuthLoading) {
             return Loader();
@@ -111,6 +111,13 @@ class _SignupPageState extends State<SignupPage> {
         listener: (context, state) {
           if (state is AuthFailure) {
             showSnackbar(context, state.message);
+          }
+          if (state is AuthSuccess) {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (_) => BlogPage()),
+              (route) => false,
+            );
           }
         },
       ),
